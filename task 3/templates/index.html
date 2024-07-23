@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Data Display</title>
+ <link
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+ <div class="container">
+ <h1 class="my-4 text-center">Data Display</h1>
+ <div class="row" id="data-container">
+ {% for item in data %}
+ <div class="col-sm-4 mb-3">
+ <div class="card">
+ <div class="card-body">
+ <p class="card-text">{{ item }}</p>
+ </div>
+ </div>
+ </div>
+ {% endfor %}
+ </div>
+ </div>
+ <script>
+ async function fetchData() {
+ const response = await fetch('/data');
+ const result = await response.json();
+ const container = document.getElementById('data-container');
+ container.innerHTML = '';
+ result.forEach(item => {
+ const card = document.createElement('div');
+ card.className = 'col-sm-4 mb-3';
+ card.innerHTML = `
+ <div class="card">
+ <div class="card-body">
+ <p class="card-text">${item}</p>
+ </div>
+ </div>
+ `;
+ container.appendChild(card);
+ });
+ }
+ setInterval(fetchData, 300000); // 5 minutes in milliseconds
+ fetchData(); // Initial load
+ </script>
+</body>
+</html

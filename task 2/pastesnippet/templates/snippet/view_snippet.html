@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Snippet</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>View Snippet</h1>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    {% if decrypted_message %}
+        <pre>{{ decrypted_message }}</pre>
+    {% elif snippet.encrypted_content %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="key" placeholder="Enter secret key"><br>
+            <button type="submit">Decrypt</button>
+        </form>
+    {% else %}
+        <pre>{{ snippet.content }}</pre>
+    {% endif %}
+</body>
+</html>
