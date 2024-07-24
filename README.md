@@ -9,11 +9,11 @@
 -Optional encryption with a secret key for secure snippets.
 -Decryption prompt if the snippet is encrypted.
 
-#Task 3:
+# Task 3:
 -Set up the Python environment and required libraries.
 -Create a web scraping function.
 -Schedule the web scraping to run every 5 minutes using a background thread.
 -Store the scraped data in a Redis database.
 
-#Problem
+# Problem
 -The data is dynamical in website it will change continously as per the live market we required cillenium atomation beautifulsoup along  to scrap the data.
